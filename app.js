@@ -18,11 +18,6 @@ let clicked = 0;
 let playXO = () => {
   clicked += 1;
 
-  if (xHasWon || oHasWon || (clicked === 9 && !xHasWon && !oHasWon)) {
-    console.log("in restart if statement");
-    restartGame();
-  }
-
   if (!played) {
     event.target.innerText = "X";
     played = true;
@@ -33,6 +28,11 @@ let playXO = () => {
     played = false;
     event.target.removeEventListener("click", playXO);
     checkWin();
+  }
+
+  if (xHasWon || oHasWon || (clicked === 9 && !xHasWon && !oHasWon)) {
+    console.log("in restart if statement");
+    restartGame();
   }
 };
 
